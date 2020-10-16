@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
+    private static final String UNRECOGNIZED_TICKET_MSG = "Unrecognized parking ticket";
+    private static final String NOT_ENOUGH_POSITION_MSG = "Not enough position";
     private Map<ParkingTicket,Car> parkingTicketCarMap= new HashMap<>();
     private int capacity = 10;
 
@@ -18,7 +20,7 @@ public class ParkingLot {
     public Car fetch(ParkingTicket parkingTicket) {
         Car car = parkingTicketCarMap.get(parkingTicket);
         if(car==null){
-            throw new UnrecognizedTicketException("Unrecognized parking ticket");
+            throw new UnrecognizedTicketException(UNRECOGNIZED_TICKET_MSG);
         }else{
             parkingTicketCarMap.remove(parkingTicket);
         }
@@ -33,7 +35,7 @@ public class ParkingLot {
         }
         else
         {
-            throw new NotEnoughPositionException("Not enough position");
+            throw new NotEnoughPositionException(NOT_ENOUGH_POSITION_MSG);
         }
     }
 
