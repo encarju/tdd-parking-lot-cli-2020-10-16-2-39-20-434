@@ -66,7 +66,6 @@ class ParkingBoyTest {
         //Given
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        ParkingTicket parkingTicket = new ParkingTicket();
         //When
         Car actualCar = parkingBoy.fetchCar(null);
         //Then
