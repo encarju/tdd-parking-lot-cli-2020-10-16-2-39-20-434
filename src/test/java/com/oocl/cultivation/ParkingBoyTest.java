@@ -89,11 +89,13 @@ class ParkingBoyTest {
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         ParkingTicket parkingTicket = parkingBoy.park(car);
+        String expectedMessage = "Unrecognized parking ticket";
         parkingBoy.fetchCar(parkingTicket);
         //When
-        Car actualCar = parkingBoy.fetchCar(parkingTicket);
+        Executable executable = () -> parkingBoy.fetchCar(parkingTicket);
         //Then
-        assertNull(actualCar);
+        Exception exception = assertThrows(UnrecognizedTicketException.class,executable);
+        assertEquals(expectedMessage,exception.getMessage());
     }
 
     @Test
