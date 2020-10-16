@@ -11,6 +11,10 @@ public class ParkingLot {
 
     }
 
+    public ParkingLot(int capacity) {
+        this.capacity = capacity;
+    }
+
     public void setCapacity(int capacity){
         this.capacity = capacity;
     }

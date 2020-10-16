@@ -91,8 +91,7 @@ class ParkingBoyTest {
         //Given
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingLot parkingLot = new ParkingLot();
-        parkingLot.setCapacity(1);
+        ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         parkingBoy.park(car1);
         //When
