@@ -2,6 +2,8 @@ package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.api.function.Executable;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -50,19 +52,21 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_null_car_when_fetch_given_wrong_ticket(){
+    void should_return_exception_with_message_when_fetch_given_wrong_ticket(){
         //Given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         ParkingTicket wrongParkingTicket = new ParkingTicket();
         ParkingTicket rightParkingTicket = parkingBoy.park(car);
+        String expectedMessage = "Unrecognized parking ticket";
         //When
-        Car actualWrongCar = parkingBoy.fetchCar(wrongParkingTicket);
-        Car actulRightCar = parkingBoy.fetchCar(rightParkingTicket);
+        Car actualRightCar = parkingBoy.fetchCar(rightParkingTicket);
+        Executable executable = () -> parkingBoy.fetchCar(wrongParkingTicket);
         //Then
-        assertNull(actualWrongCar);
-        assertSame(car,actulRightCar);
+        Exception exception = assertThrows(UnrecognizedTicketException.class,executable);
+        assertEquals(expectedMessage,exception.getMessage());
+        assertSame(car,actualRightCar);
     }
 
     @Test
