@@ -31,7 +31,10 @@ public class ParkingLot {
             parkingTicketCarMap.put(parkingTicket,car);
             return parkingTicket;
         }
-        return null;
+        else
+        {
+            throw new NotEnoughPositionException("Not enough position");
+        }
     }
 
     private boolean isFullCapacity() {
