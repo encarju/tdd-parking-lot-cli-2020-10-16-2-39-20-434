@@ -15,10 +15,6 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
-    public void setCapacity(int capacity){
-        this.capacity = capacity;
-    }
-
     public Car fetch(ParkingTicket parkingTicket) {
         Car car = parkingTicketCarMap.get(parkingTicket);
         parkingTicketCarMap.remove(parkingTicket);
