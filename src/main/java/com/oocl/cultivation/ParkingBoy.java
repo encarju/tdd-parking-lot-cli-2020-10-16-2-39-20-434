@@ -15,6 +15,9 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
+        if(parkingTicket==null){
+            throw new NotProvidedTicketException("Please provide your parking ticket");
+        }
         return  parkingLot.fetch(parkingTicket);
     }
 }
