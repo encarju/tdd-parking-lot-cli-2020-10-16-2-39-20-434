@@ -52,13 +52,17 @@ class ParkingBoyTest {
     @Test
     void should_return_null_car_when_fetch_given_wrong_ticket(){
         //Given
+        Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        ParkingTicket parkingTicket = new ParkingTicket();
+        ParkingTicket wrongParkingTicket = new ParkingTicket();
+        ParkingTicket rightParkingTicket = parkingBoy.park(car);
         //When
-        Car actualCar = parkingBoy.fetchCar(parkingTicket);
+        Car actualWrongCar = parkingBoy.fetchCar(wrongParkingTicket);
+        Car actulRightCar = parkingBoy.fetchCar(rightParkingTicket);
         //Then
-        assertNull(actualCar);
+        assertNull(actualWrongCar);
+        assertSame(car,actulRightCar);
     }
 
     @Test
