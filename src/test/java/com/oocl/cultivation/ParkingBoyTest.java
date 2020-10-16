@@ -86,4 +86,18 @@ class ParkingBoyTest {
         assertNull(actualCar);
     }
 
+    @Test
+    void should_return_null_ticket_when_parking_another_car_given_parking_lot_capacity_1(){
+        //Given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLot.setCapacity(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        parkingBoy.park(car1);
+        //When
+        ParkingTicket parkingTicket = parkingBoy.park(car2);
+        //Then
+        assertNull(parkingTicket);
+    }
 }
