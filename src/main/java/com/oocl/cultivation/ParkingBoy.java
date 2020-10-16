@@ -2,6 +2,7 @@ package com.oocl.cultivation;
 
 public class ParkingBoy {
 
+    private static final String NOT_PROVIDED_TICKET_MSG = "Please provide your parking ticket";
     private ParkingLot parkingLot;
 
     public ParkingBoy(ParkingLot parkingLot) {
@@ -16,7 +17,7 @@ public class ParkingBoy {
 
     public Car fetchCar(ParkingTicket parkingTicket) {
         if(parkingTicket==null){
-            throw new NotProvidedTicketException("Please provide your parking ticket");
+            throw new NotProvidedTicketException(NOT_PROVIDED_TICKET_MSG);
         }
         return  parkingLot.fetch(parkingTicket);
     }
