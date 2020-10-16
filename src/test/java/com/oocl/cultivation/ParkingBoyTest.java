@@ -105,10 +105,12 @@ class ParkingBoyTest {
         Car car2 = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        String expectedMessage = "Not enough position";
         parkingBoy.park(car1);
         //When
-        ParkingTicket parkingTicket = parkingBoy.park(car2);
+        Executable executable = () -> parkingBoy.park(car2);;
         //Then
-        assertNull(parkingTicket);
+        Exception exception = assertThrows(NotEnoughPositionException.class,executable);
+        assertEquals(expectedMessage,exception.getMessage());
     }
 }
