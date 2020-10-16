@@ -78,7 +78,7 @@ class ParkingBoyTest {
         //When
         Executable executable = () -> parkingBoy.fetchCar(null);
         //Then
-        Exception exception = assertThrows(UnrecognizedTicketException.class,executable);
+        Exception exception = assertThrows(NotProvidedTicketException.class,executable);
         assertEquals(expectedMessage,exception.getMessage());
     }
 
