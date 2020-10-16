@@ -10,6 +10,6 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
-        return null;
+        return new Car();
     }
 }
