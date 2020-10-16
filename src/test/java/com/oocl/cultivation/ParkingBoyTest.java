@@ -50,7 +50,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_null_when_fetch_given_wrong_ticket(){
+    void should_return_null_car_when_fetch_given_wrong_ticket(){
         //Given
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
@@ -62,7 +62,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_null_when_fetch_given_no_ticket(){
+    void should_return_null_car_when_fetch_given_no_ticket(){
         //Given
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
@@ -73,7 +73,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_null_when_fetch_given_parking_ticket_already_used(){
+    void should_return_null_car_when_fetch_given_parking_ticket_already_used(){
         //Given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
