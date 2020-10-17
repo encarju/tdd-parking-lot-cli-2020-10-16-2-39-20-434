@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.function.Executable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -112,5 +115,22 @@ class ParkingBoyTest {
         //Then
         Exception exception = assertThrows(NotEnoughPositionException.class,executable);
         assertEquals(expectedMessage,exception.getMessage());
+    }
+
+
+    @Test
+    void should_return_ticket_when_parking_another_car_given_multiple_parking_lot_and_parking_lot_1_full(){
+        //Given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(1));
+        parkingLotList.add(new ParkingLot(2));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        parkingBoy.park(car1);
+        //When
+        ParkingTicket parkingTicket = parkingBoy.park(car2);
+        //Then
+        assertNotNull(parkingTicket);
     }
 }

@@ -1,13 +1,20 @@
 package com.oocl.cultivation;
 
+import java.util.List;
+
 public class ParkingBoy {
 
     private static final String NOT_PROVIDED_TICKET_MSG = "Please provide your parking ticket";
     private ParkingLot parkingLot;
+    private List<ParkingLot> parkingLotList;
 
     public ParkingBoy(ParkingLot parkingLot) {
 
         this.parkingLot = parkingLot;
+    }
+
+    public ParkingBoy(List<ParkingLot> parkingLotList) {
+        this.parkingLotList = parkingLotList;
     }
 
 
