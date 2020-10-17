@@ -17,4 +17,8 @@ public class ServiceManager {
     public List<ParkingBoy> getManagementList() {
         return managementList;
     }
+
+    public ParkingTicket parkCarByParkingBoy(ParkingBoy parkingBoy, Car car) {
+        return null;
+    }
 }

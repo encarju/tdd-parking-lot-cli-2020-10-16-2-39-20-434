@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ServiceManagerTest {
@@ -19,6 +20,21 @@ class ServiceManagerTest {
         boolean hasParkingBoy = parkingBoyList.size()>0;
         //Then
         assertTrue(hasParkingBoy);
+
+    }
+
+    @Test
+    void should_return_ticket_when_parking_given_a_car_to_service_manager_specified_parking_boy(){
+        //Given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ServiceManager serviceManager = new ServiceManager();
+        serviceManager.addToManagementList(parkingBoy);
+        //When
+        ParkingTicket parkingTicket = serviceManager.parkCarByParkingBoy(parkingBoy,car);
+        //Then
+        assertNotNull(parkingTicket);
 
     }
 }
