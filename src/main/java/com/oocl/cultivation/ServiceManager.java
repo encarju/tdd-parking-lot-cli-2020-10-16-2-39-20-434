@@ -30,4 +30,7 @@ public class ServiceManager {
         return managementList.contains(parkingBoy);
     }
 
+    public Car fetchkCarByParkingBoy(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
+        return null;
+    }
 }
