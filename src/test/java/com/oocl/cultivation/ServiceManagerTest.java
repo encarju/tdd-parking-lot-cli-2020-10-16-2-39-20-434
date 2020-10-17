@@ -52,4 +52,17 @@ class ServiceManagerTest {
         assertSame(car,actualCar);
 
     }
+
+    @Test
+    void should_return_ticket_when_parking_given_a_car_to_service_manager(){
+        //Given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ServiceManager serviceManager = new ServiceManager(parkingLot);
+        //When
+        ParkingTicket parkingTicket = serviceManager.park(car);
+        //Then
+        assertNotNull(parkingTicket);
+
+    }
 }

@@ -10,6 +10,10 @@ public class ServiceManager {
         managementList = new ArrayList<>();
     }
 
+    public ServiceManager(ParkingLot parkingLot) {
+
+    }
+
     public void addToManagementList(ParkingBoy parkingBoy) {
         managementList.add(parkingBoy);
     }
@@ -34,6 +38,10 @@ public class ServiceManager {
         if(containsParkingBoy(parkingBoy)){
             return parkingBoy.fetchCar(parkingTicket);
         }
+        return null;
+    }
+
+    public ParkingTicket park(Car car) {
         return null;
     }
 }
