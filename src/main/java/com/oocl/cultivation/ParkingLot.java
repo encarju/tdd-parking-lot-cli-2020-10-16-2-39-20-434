@@ -51,4 +51,8 @@ public class ParkingLot {
         return capacity-parkingTicketCarMap.size();
     }
 
+    public Double getCapacityRate(){
+        return Double.valueOf((capacity-parkingTicketCarMap.size())/capacity);
+    }
+
 }
