@@ -19,6 +19,15 @@ public class ServiceManager {
     }
 
     public ParkingTicket parkCarByParkingBoy(ParkingBoy parkingBoy, Car car) {
+        if(containsParkingBoy(parkingBoy)){
+            return parkingBoy.park(car);
+        }
         return null;
+
     }
+
+    private boolean containsParkingBoy(ParkingBoy parkingBoy){
+        return managementList.contains(parkingBoy);
+    }
+
 }

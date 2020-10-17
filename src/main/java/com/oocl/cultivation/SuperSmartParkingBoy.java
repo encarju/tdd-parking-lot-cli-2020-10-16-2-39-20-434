@@ -7,6 +7,10 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         super(parkingLotList);
     }
 
+    public SuperSmartParkingBoy(ParkingLot parkingLot) {
+        super(parkingLot);
+    }
+
     @Override
     public void getParkingLotOutOfList() {
         parkingLot = parkingLotList.stream().
