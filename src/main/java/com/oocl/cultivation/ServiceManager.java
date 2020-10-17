@@ -31,6 +31,9 @@ public class ServiceManager {
     }
 
     public Car fetchkCarByParkingBoy(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
+        if(containsParkingBoy(parkingBoy)){
+            return parkingBoy.fetchCar(parkingTicket);
+        }
         return null;
     }
 }
