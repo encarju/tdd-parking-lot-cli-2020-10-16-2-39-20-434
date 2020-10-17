@@ -133,4 +133,23 @@ class ParkingBoyTest {
         //Then
         assertNotNull(parkingTicket);
     }
+
+    @Test
+    void should_return_correct_car_when_fetching_given_multiple_car_with_different_parking_lot(){
+        //Given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(1));
+        parkingLotList.add(new ParkingLot(2));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+        //When
+        Car actualCar1 = parkingBoy.fetchCar(parkingTicket1);
+        Car actualCar2 = parkingBoy.fetchCar(parkingTicket2);
+        //Then
+        assertSame(car1,actualCar1);
+        assertSame(car2,actualCar2);
+    }
 }
