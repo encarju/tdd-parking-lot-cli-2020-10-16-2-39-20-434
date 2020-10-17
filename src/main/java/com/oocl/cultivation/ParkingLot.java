@@ -47,4 +47,8 @@ public class ParkingLot {
         return parkingTicketCarMap.containsKey(parkingTicket);
     }
 
+    public int getAvailableCapacity(){
+        return capacity-parkingTicketCarMap.size();
+    }
+
 }

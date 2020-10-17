@@ -7,8 +7,8 @@ import java.util.Optional;
 public class ParkingBoy {
 
     private static final String NOT_PROVIDED_TICKET_MSG = "Please provide your parking ticket";
-    private ParkingLot parkingLot;
-    private List<ParkingLot> parkingLotList = new ArrayList<>();
+    public ParkingLot parkingLot;
+    public List<ParkingLot> parkingLotList = new ArrayList<>();
 
     public ParkingBoy(ParkingLot parkingLot) {
 
@@ -19,7 +19,7 @@ public class ParkingBoy {
         this.parkingLotList = parkingLotList;
     }
 
-    private void getParkingLotOutOfList() {
+    public void getParkingLotOutOfList() {
         parkingLot = parkingLotList.stream().
                 filter(parkingLot -> parkingLot.isNotFullCapacity()).findFirst().orElse(null);
         if((parkingLot == null && parkingLotList.size()>0)) {
@@ -32,7 +32,7 @@ public class ParkingBoy {
         return parkingLot.park(car);
     }
 
-    private void getFetchingLotOutOfList(ParkingTicket parkingTicket){
+    public void getFetchingLotOutOfList(ParkingTicket parkingTicket){
         parkingLot = parkingLotList.stream().
                 filter(parkingLot -> parkingLot.hasParkingTicket(parkingTicket)).findFirst().orElse(null);
         if((parkingLot == null && parkingLotList.size()>0)) {
