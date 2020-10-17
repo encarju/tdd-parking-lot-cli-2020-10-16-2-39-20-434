@@ -7,8 +7,10 @@ import java.util.Optional;
 public class ParkingBoy {
 
     private static final String NOT_PROVIDED_TICKET_MSG = "Please provide your parking ticket";
-    public ParkingLot parkingLot;
-    public List<ParkingLot> parkingLotList = new ArrayList<>();
+
+    private ParkingLot parkingLot;
+
+    private List<ParkingLot> parkingLotList = new ArrayList<>();
 
     public ParkingBoy(ParkingLot parkingLot) {
 
@@ -18,6 +20,15 @@ public class ParkingBoy {
     public ParkingBoy(List<ParkingLot> parkingLotList) {
         this.parkingLotList = parkingLotList;
     }
+
+    public List<ParkingLot> getParkingLotList() {
+        return parkingLotList;
+    }
+
+    public void setParkingLot(ParkingLot parkingLot) {
+        this.parkingLot = parkingLot;
+    }
+
 
     public void getParkingLotOutOfList() {
         parkingLot = parkingLotList.stream().

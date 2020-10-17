@@ -14,10 +14,12 @@ public class SmartParkingBoy extends ParkingBoy{
 
     @Override
     public void getParkingLotOutOfList() {
-        parkingLot = parkingLotList.stream().
+        List<ParkingLot> parkingLotList = super.getParkingLotList();
+        ParkingLot parkingLotOutOfList = parkingLotList.stream().
                 reduce((higherParkingLot,
                         parkingLot)-> higherParkingLot.getAvailableCapacity() >= parkingLot.getAvailableCapacity()
                         ? higherParkingLot : parkingLot).get();
+        super.setParkingLot(parkingLotOutOfList);
     }
 
 }
