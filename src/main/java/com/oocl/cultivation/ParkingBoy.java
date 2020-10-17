@@ -32,10 +32,19 @@ public class ParkingBoy {
         return parkingLot.park(car);
     }
 
+    private void getFetchingLotOutOfList(ParkingTicket parkingTicket){
+        parkingLot = parkingLotList.stream().
+                filter(parkingLot -> parkingLot.hasParkingTicket(parkingTicket)).findFirst().orElse(null);
+        if((parkingLot == null && parkingLotList.size()>0)) {
+            parkingLot = parkingLotList.get(0);
+        }
+    }
+
     public Car fetchCar(ParkingTicket parkingTicket) {
         if(parkingTicket==null){
             throw new NotProvidedTicketException(NOT_PROVIDED_TICKET_MSG);
         }
+        getFetchingLotOutOfList(parkingTicket);
         return  parkingLot.fetch(parkingTicket);
     }
 }
