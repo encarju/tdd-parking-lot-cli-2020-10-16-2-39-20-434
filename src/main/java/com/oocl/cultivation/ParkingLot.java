@@ -28,7 +28,7 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        if(isFullCapacity()){
+        if(isNotFullCapacity()){
             ParkingTicket parkingTicket = new ParkingTicket();
             parkingTicketCarMap.put(parkingTicket,car);
             return parkingTicket;
@@ -39,7 +39,7 @@ public class ParkingLot {
         }
     }
 
-    private boolean isFullCapacity() {
+    public boolean isNotFullCapacity() {
         return parkingTicketCarMap.size()<capacity;
     }
 
