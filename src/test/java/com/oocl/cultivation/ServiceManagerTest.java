@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.List;
 
@@ -89,5 +90,25 @@ class ServiceManagerTest {
         //Then
         assertNull(parkingTicket);
 
+    }
+
+    @Test
+    void should_return_exception_with_message_when_fetch_given_wrong_ticket_to_service_manager_to_parking_boy(){
+        //Given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingTicket wrongParkingTicket = new ParkingTicket();
+        ParkingTicket rightParkingTicket = parkingBoy.park(car);
+        String expectedMessage = "Unrecognized parking ticket";
+        ServiceManager serviceManager = new ServiceManager();
+        serviceManager.addToManagementList(parkingBoy);
+        //When
+        Car actualRightCar = parkingBoy.fetchCar(rightParkingTicket);
+        Executable executable = () -> serviceManager.fetchkCarByParkingBoy(parkingBoy,wrongParkingTicket);
+        //Then
+        Exception exception = assertThrows(UnrecognizedTicketException.class,executable);
+        assertEquals(expectedMessage,exception.getMessage());
+        assertSame(car,actualRightCar);
     }
 }
