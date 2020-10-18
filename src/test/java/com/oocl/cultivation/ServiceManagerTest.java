@@ -126,4 +126,22 @@ class ServiceManagerTest {
         Exception exception = assertThrows(NotProvidedTicketException.class,executable);
         assertEquals(expectedMessage,exception.getMessage());
     }
+
+    @Test
+    void should_return_exception_when_fetch_given_parking_ticket_already_used_to_parking_manager_to_parking_boy(){
+        //Given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        ServiceManager serviceManager = new ServiceManager();
+        serviceManager.addToManagementList(parkingBoy);
+        String expectedMessage = "Unrecognized parking ticket";
+        parkingBoy.fetchCar(parkingTicket);
+        //When
+        Executable executable = () -> serviceManager.fetchkCarByParkingBoy(parkingBoy,parkingTicket);
+        //Then
+        Exception exception = assertThrows(UnrecognizedTicketException.class,executable);
+        assertEquals(expectedMessage,exception.getMessage());
+    }
 }
