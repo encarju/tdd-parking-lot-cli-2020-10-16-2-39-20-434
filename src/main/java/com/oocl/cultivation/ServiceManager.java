@@ -3,14 +3,16 @@ package com.oocl.cultivation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceManager {
+public class ServiceManager extends ParkingBoy{
     private List<ParkingBoy> managementList;
 
     public ServiceManager() {
+        super();
         managementList = new ArrayList<>();
     }
 
     public ServiceManager(ParkingLot parkingLot) {
+        super(parkingLot);
 
     }
 
@@ -41,7 +43,4 @@ public class ServiceManager {
         return null;
     }
 
-    public ParkingTicket park(Car car) {
-        return null;
-    }
 }
