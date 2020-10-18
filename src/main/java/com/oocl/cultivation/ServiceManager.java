@@ -43,4 +43,17 @@ public class ServiceManager extends ParkingBoy{
         return null;
     }
 
+    @Override
+    public ParkingTicket park(Car car) {
+        if(hasParkingLot()){
+            super.getParkingLotOutOfList();
+            return super.getParkingLot().park(car);
+        }
+        return null;
+
+    }
+
+    private boolean hasParkingLot(){
+        return super.getParkingLotList().size()>0;
+    }
 }

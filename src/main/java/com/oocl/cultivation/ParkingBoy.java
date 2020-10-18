@@ -25,6 +25,10 @@ public class ParkingBoy {
 
     }
 
+    public ParkingLot getParkingLot() {
+        return parkingLot;
+    }
+
     public List<ParkingLot> getParkingLotList() {
         return parkingLotList;
     }
