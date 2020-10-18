@@ -41,9 +41,7 @@ public class ParkingBoy {
     public void getParkingLotOutOfList() {
         parkingLot = parkingLotList.stream().
                 filter(parkingLot -> parkingLot.isNotFullCapacity()).findFirst().orElse(null);
-        if((parkingLot == null && parkingLotList.size()>0)) {
-            parkingLot = parkingLotList.get(0);
-        }
+        setDefaultParkingLot();
     }
 
     public ParkingTicket park(Car car) {
@@ -54,9 +52,7 @@ public class ParkingBoy {
     public void getFetchingLotOutOfList(ParkingTicket parkingTicket){
         parkingLot = parkingLotList.stream().
                 filter(parkingLot -> parkingLot.hasParkingTicket(parkingTicket)).findFirst().orElse(null);
-        if((parkingLot == null && parkingLotList.size()>0)) {
-            parkingLot = parkingLotList.get(0);
-        }
+        setDefaultParkingLot();
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
@@ -66,4 +62,11 @@ public class ParkingBoy {
         getFetchingLotOutOfList(parkingTicket);
         return  parkingLot.fetch(parkingTicket);
     }
+
+    private void setDefaultParkingLot(){
+        if((parkingLot == null && parkingLotList.size()>0)) {
+            parkingLot = parkingLotList.get(0);
+        }
+    }
+
 }
