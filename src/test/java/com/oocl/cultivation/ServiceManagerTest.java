@@ -78,4 +78,16 @@ class ServiceManagerTest {
         assertSame(car,actualCar);
 
     }
+
+    @Test
+    void should_return_null_when_parking_given_a_car_to_service_manager_no_parking_lot(){
+        //Given
+        Car car = new Car();
+        ServiceManager serviceManager = new ServiceManager();
+        //When
+        ParkingTicket parkingTicket = serviceManager.park(car);
+        //Then
+        assertNull(parkingTicket);
+
+    }
 }
