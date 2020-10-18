@@ -144,4 +144,22 @@ class ServiceManagerTest {
         Exception exception = assertThrows(UnrecognizedTicketException.class,executable);
         assertEquals(expectedMessage,exception.getMessage());
     }
+
+    @Test
+    void should_return_exception_ticket_when_parking_another_car_given_parking_lot_capacity_1(){
+        //Given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ServiceManager serviceManager = new ServiceManager();
+        serviceManager.addToManagementList(parkingBoy);
+        String expectedMessage = "Not enough position";
+        serviceManager.parkCarByParkingBoy(parkingBoy,car1);
+        //When
+        Executable executable = () -> serviceManager.parkCarByParkingBoy(parkingBoy,car2);
+        //Then
+        Exception exception = assertThrows(NotEnoughPositionException.class,executable);
+        assertEquals(expectedMessage,exception.getMessage());
+    }
 }
