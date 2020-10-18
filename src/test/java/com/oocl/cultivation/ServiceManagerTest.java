@@ -111,4 +111,19 @@ class ServiceManagerTest {
         assertEquals(expectedMessage,exception.getMessage());
         assertSame(car,actualRightCar);
     }
+
+    @Test
+    void should_return_exception_car_when_fetch_given_no_ticket_to_service_manager_to_parking_boy(){
+        //Given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ServiceManager serviceManager = new ServiceManager();
+        serviceManager.addToManagementList(parkingBoy);
+        String expectedMessage = "Please provide your parking ticket";
+        //When
+        Executable executable = () -> serviceManager.fetchkCarByParkingBoy(parkingBoy,null);
+        //Then
+        Exception exception = assertThrows(NotProvidedTicketException.class,executable);
+        assertEquals(expectedMessage,exception.getMessage());
+    }
 }
