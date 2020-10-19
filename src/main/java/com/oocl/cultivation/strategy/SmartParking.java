@@ -1,6 +1,8 @@
 package com.oocl.cultivation.strategy;
 
+import com.oocl.cultivation.carparking.Constants;
 import com.oocl.cultivation.carparking.ParkingLot;
+import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 
 import java.util.List;
 
@@ -10,10 +12,8 @@ public class SmartParking implements ParkingStrategy {
         ParkingLot parkingLotOutOfList = parkingLotList.stream().
                 reduce((parkingLotWithHigherCapacity,
                         parkingLot)-> parkingLotWithHigherCapacity.getAvailableCapacity()
-                        >= parkingLot.getAvailableCapacity() ? parkingLotWithHigherCapacity : parkingLot).get();
-        if((parkingLotOutOfList == null && parkingLotList.size()>0)) {
-            parkingLotOutOfList = parkingLotList.get(0);
-        }
+                        >= parkingLot.getAvailableCapacity() ? parkingLotWithHigherCapacity : parkingLot)
+                .orElseThrow(()-> new NotEnoughPositionException(Constants.NOT_ENOUGH_POSITION_MSG));
         return parkingLotOutOfList;
     }
 }
