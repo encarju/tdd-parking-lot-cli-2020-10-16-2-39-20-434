@@ -38,7 +38,7 @@ public class ParkingBoy {
     public void getFetchingLotOutOfList(ParkingTicket parkingTicket){
         parkingLot = parkingLotList.stream().
                 filter(parkingLot -> parkingLot.hasParkingTicket(parkingTicket)).
-                findFirst().orElseThrow(()-> new UnrecognizedTicketException("Unrecognized parking ticket"));
+                findFirst().orElseThrow(()-> new UnrecognizedTicketException(Constants.UNRECOGNIZED_TICKET_MSG));
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
