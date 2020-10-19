@@ -1,4 +1,6 @@
-package com.oocl.cultivation;
+package com.oocl.cultivation.carparking;
+
+import com.oocl.cultivation.strategy.SmartParking;
 
 import java.util.List;
 

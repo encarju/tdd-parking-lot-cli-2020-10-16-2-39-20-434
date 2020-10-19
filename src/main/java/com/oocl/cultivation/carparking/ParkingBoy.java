@@ -1,4 +1,8 @@
-package com.oocl.cultivation;
+package com.oocl.cultivation.carparking;
+
+import com.oocl.cultivation.exceptions.NotProvidedTicketException;
+import com.oocl.cultivation.strategy.NormalParking;
+import com.oocl.cultivation.strategy.ParkingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
