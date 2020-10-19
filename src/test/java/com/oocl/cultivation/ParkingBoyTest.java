@@ -111,7 +111,7 @@ class ParkingBoyTest {
         String expectedMessage = "Not enough position";
         parkingBoy.park(car1);
         //When
-        Executable executable = () -> parkingBoy.park(car2);;
+        Executable executable = () -> parkingBoy.park(car2);
         //Then
         Exception exception = assertThrows(NotEnoughPositionException.class,executable);
         assertEquals(expectedMessage,exception.getMessage());
