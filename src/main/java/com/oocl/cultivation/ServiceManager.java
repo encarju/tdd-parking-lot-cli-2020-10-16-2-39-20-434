@@ -6,15 +6,10 @@ import java.util.List;
 public class ServiceManager extends ParkingBoy{
     private List<ParkingBoy> managementList;
 
-    public ServiceManager() {
-        super();
-        managementList = new ArrayList<>();
-        parkingStrategyType = new NormalParking();
-    }
-
     public ServiceManager(ParkingLot parkingLot) {
         super(parkingLot);
-
+        managementList = new ArrayList<>();
+        parkingStrategyType = new NormalParking();
     }
 
     public void addToManagementList(ParkingBoy parkingBoy) {

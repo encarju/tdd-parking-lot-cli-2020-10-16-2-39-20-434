@@ -13,7 +13,7 @@ class ServiceManagerTest {
         //Given
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        ServiceManager serviceManager = new ServiceManager();
+        ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
         //When
         List<ParkingBoy> parkingBoyList = serviceManager.getManagementList();
@@ -29,7 +29,7 @@ class ServiceManagerTest {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        ServiceManager serviceManager = new ServiceManager();
+        ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
         //When
         ParkingTicket parkingTicket = serviceManager.parkCarByParkingBoy(parkingBoy,car);
@@ -44,7 +44,7 @@ class ServiceManagerTest {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        ServiceManager serviceManager = new ServiceManager();
+        ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
         ParkingTicket parkingTicket = serviceManager.parkCarByParkingBoy(parkingBoy,car);
         //When
@@ -81,18 +81,6 @@ class ServiceManagerTest {
     }
 
     @Test
-    void should_return_null_when_parking_given_a_car_to_service_manager_no_parking_lot(){
-        //Given
-        Car car = new Car();
-        ServiceManager serviceManager = new ServiceManager();
-        //When
-        ParkingTicket parkingTicket = serviceManager.park(car);
-        //Then
-        assertNull(parkingTicket);
-
-    }
-
-    @Test
     void should_return_exception_with_message_when_fetch_given_wrong_ticket_to_service_manager_to_parking_boy(){
         //Given
         Car car = new Car();
@@ -101,7 +89,7 @@ class ServiceManagerTest {
         ParkingTicket wrongParkingTicket = new ParkingTicket();
         ParkingTicket rightParkingTicket = parkingBoy.park(car);
         String expectedMessage = "Unrecognized parking ticket";
-        ServiceManager serviceManager = new ServiceManager();
+        ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
         //When
         Car actualRightCar = parkingBoy.fetchCar(rightParkingTicket);
@@ -117,7 +105,7 @@ class ServiceManagerTest {
         //Given
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        ServiceManager serviceManager = new ServiceManager();
+        ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
         String expectedMessage = "Please provide your parking ticket";
         //When
@@ -134,7 +122,7 @@ class ServiceManagerTest {
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         ParkingTicket parkingTicket = parkingBoy.park(car);
-        ServiceManager serviceManager = new ServiceManager();
+        ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
         String expectedMessage = "Unrecognized parking ticket";
         parkingBoy.fetchCar(parkingTicket);
@@ -152,7 +140,7 @@ class ServiceManagerTest {
         Car car2 = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        ServiceManager serviceManager = new ServiceManager();
+        ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
         String expectedMessage = "Not enough position";
         serviceManager.parkCarByParkingBoy(parkingBoy,car1);
