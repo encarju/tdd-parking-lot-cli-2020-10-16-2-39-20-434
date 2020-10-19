@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
+    public static final int DEFAULT_CAPACITY = 10;
     private static final String UNRECOGNIZED_TICKET_MSG = "Unrecognized parking ticket";
     private static final String NOT_ENOUGH_POSITION_MSG = "Not enough position";
     private Map<ParkingTicket,Car> parkingTicketCarMap= new HashMap<>();
-    private int capacity = 10;
+    private int capacity = DEFAULT_CAPACITY ;
 
     public ParkingLot() {
 
