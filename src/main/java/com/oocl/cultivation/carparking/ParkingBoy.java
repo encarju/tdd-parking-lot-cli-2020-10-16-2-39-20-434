@@ -31,7 +31,6 @@ public class ParkingBoy {
 
     public ParkingTicket park(Car car) {
         parkingLot = parkingStrategyType.getParkingLotOutOfList(parkingLotList);
-        setDefaultParkingLot();
         return parkingLot.park(car);
     }
 
@@ -52,12 +51,6 @@ public class ParkingBoy {
 
     private boolean hasProvidedTicket(ParkingTicket parkingTicket) {
         return parkingTicket!=null;
-    }
-
-    private void setDefaultParkingLot(){
-        if(parkingLot == null && parkingLotList.size()>0) {
-            parkingLot = parkingLotList.get(0);
-        }
     }
 
 }
