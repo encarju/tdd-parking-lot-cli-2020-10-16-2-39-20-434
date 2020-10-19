@@ -18,13 +18,14 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        Car car = parkingTicketCarMap.get(parkingTicket);
-        if(car==null){
-            throw new UnrecognizedTicketException(UNRECOGNIZED_TICKET_MSG);
-        }else{
+        if(hasParkingTicket(parkingTicket)){
+            Car car = parkingTicketCarMap.get(parkingTicket);
             parkingTicketCarMap.remove(parkingTicket);
+            return car;
         }
-        return car;
+        else{
+            throw new UnrecognizedTicketException(UNRECOGNIZED_TICKET_MSG);
+        }
     }
 
     public ParkingTicket park(Car car) {
