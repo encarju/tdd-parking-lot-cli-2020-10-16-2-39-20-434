@@ -22,10 +22,6 @@ public class ParkingBoy {
         this.parkingLotList = parkingLotList;
     }
 
-    public ParkingBoy() {
-
-    }
-
     public List<ParkingLot> getParkingLotList() {
         return parkingLotList;
     }
