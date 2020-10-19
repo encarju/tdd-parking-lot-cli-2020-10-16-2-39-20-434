@@ -9,6 +9,7 @@ public class ServiceManager extends ParkingBoy{
     public ServiceManager() {
         super();
         managementList = new ArrayList<>();
+        parkingStrategyType = new NormalParking();
     }
 
     public ServiceManager(ParkingLot parkingLot) {
@@ -46,8 +47,7 @@ public class ServiceManager extends ParkingBoy{
     @Override
     public ParkingTicket park(Car car) {
         if(hasParkingLot()){
-            super.getParkingLotOutOfList();
-            return super.getParkingLot().park(car);
+            return super.park(car);
         }
         return null;
 

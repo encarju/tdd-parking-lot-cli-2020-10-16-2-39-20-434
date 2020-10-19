@@ -12,6 +12,8 @@ public class ParkingBoy {
 
     private List<ParkingLot> parkingLotList = new ArrayList<>();
 
+    public ParkingStrategy parkingStrategyType = new NormalParking();
+
     public ParkingBoy(ParkingLot parkingLot) {
 
         this.parkingLotList.add(parkingLot);
@@ -25,27 +27,13 @@ public class ParkingBoy {
 
     }
 
-    public ParkingLot getParkingLot() {
-        return parkingLot;
-    }
-
     public List<ParkingLot> getParkingLotList() {
         return parkingLotList;
     }
 
-    public void setParkingLot(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
-    }
-
-
-    public void getParkingLotOutOfList() {
-        parkingLot = parkingLotList.stream().
-                filter(parkingLot -> parkingLot.isNotFullCapacity()).findFirst().orElse(null);
-        setDefaultParkingLot();
-    }
-
     public ParkingTicket park(Car car) {
-        getParkingLotOutOfList();
+        parkingLot = parkingStrategyType.getParkingLotOutOfList(parkingLotList);
+        setDefaultParkingLot();
         return parkingLot.park(car);
     }
 
