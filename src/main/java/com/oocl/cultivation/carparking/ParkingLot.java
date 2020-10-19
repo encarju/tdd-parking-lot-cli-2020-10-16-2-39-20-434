@@ -6,9 +6,7 @@ import com.oocl.cultivation.exceptions.UnrecognizedTicketException;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ParkingLot {
-    public static final int DEFAULT_CAPACITY = 10;
-    private static final String UNRECOGNIZED_TICKET_MSG = "Unrecognized parking ticket";
-    private static final String NOT_ENOUGH_POSITION_MSG = "Not enough position";
+    private static final int DEFAULT_CAPACITY = 10;
     private ConcurrentHashMap<ParkingTicket,Car> parkingTicketCarMap= new ConcurrentHashMap<>();
     private int capacity = DEFAULT_CAPACITY ;
 
@@ -27,7 +25,7 @@ public class ParkingLot {
             return car;
         }
         else{
-            throw new UnrecognizedTicketException(UNRECOGNIZED_TICKET_MSG);
+            throw new UnrecognizedTicketException(Constants.UNRECOGNIZED_TICKET_MSG);
         }
     }
 
@@ -39,7 +37,7 @@ public class ParkingLot {
         }
         else
         {
-            throw new NotEnoughPositionException(NOT_ENOUGH_POSITION_MSG);
+            throw new NotEnoughPositionException(Constants.NOT_ENOUGH_POSITION_MSG);
         }
     }
 
