@@ -17,7 +17,7 @@ class ServiceManagerTest {
         serviceManager.addToManagementList(parkingBoy);
         //When
         List<ParkingBoy> parkingBoyList = serviceManager.getManagementList();
-        boolean hasParkingBoy = parkingBoyList.size()>0;
+        boolean hasParkingBoy = !parkingBoyList.isEmpty();
         //Then
         assertTrue(hasParkingBoy);
 
