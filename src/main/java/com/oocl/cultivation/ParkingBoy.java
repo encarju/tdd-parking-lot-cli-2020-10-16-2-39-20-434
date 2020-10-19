@@ -52,7 +52,7 @@ public class ParkingBoy {
     }
 
     private void setDefaultParkingLot(){
-        if((parkingLot == null && parkingLotList.size()>0)) {
+        if(parkingLot == null && parkingLotList.size()>0) {
             parkingLot = parkingLotList.get(0);
         }
     }
