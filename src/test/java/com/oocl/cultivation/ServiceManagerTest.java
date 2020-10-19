@@ -56,7 +56,7 @@ class ServiceManagerTest {
         serviceManager.addToManagementList(parkingBoy);
         ParkingTicket parkingTicket = serviceManager.parkCarByParkingBoy(parkingBoy,car);
         //When
-        Car actualCar = serviceManager.fetchkCarByParkingBoy(parkingBoy,parkingTicket);
+        Car actualCar = serviceManager.fetchCarByParkingBoy(parkingBoy,parkingTicket);
         //Then
         assertSame(car,actualCar);
 
@@ -101,7 +101,7 @@ class ServiceManagerTest {
         serviceManager.addToManagementList(parkingBoy);
         //When
         Car actualRightCar = parkingBoy.fetchCar(rightParkingTicket);
-        Executable executable = () -> serviceManager.fetchkCarByParkingBoy(parkingBoy,wrongParkingTicket);
+        Executable executable = () -> serviceManager.fetchCarByParkingBoy(parkingBoy,wrongParkingTicket);
         //Then
         Exception exception = assertThrows(UnrecognizedTicketException.class,executable);
         assertEquals(expectedMessage,exception.getMessage());
@@ -117,7 +117,7 @@ class ServiceManagerTest {
         serviceManager.addToManagementList(parkingBoy);
         String expectedMessage = "Please provide your parking ticket";
         //When
-        Executable executable = () -> serviceManager.fetchkCarByParkingBoy(parkingBoy,null);
+        Executable executable = () -> serviceManager.fetchCarByParkingBoy(parkingBoy,null);
         //Then
         Exception exception = assertThrows(NotProvidedTicketException.class,executable);
         assertEquals(expectedMessage,exception.getMessage());
@@ -135,7 +135,7 @@ class ServiceManagerTest {
         String expectedMessage = "Unrecognized parking ticket";
         parkingBoy.fetchCar(parkingTicket);
         //When
-        Executable executable = () -> serviceManager.fetchkCarByParkingBoy(parkingBoy,parkingTicket);
+        Executable executable = () -> serviceManager.fetchCarByParkingBoy(parkingBoy,parkingTicket);
         //Then
         Exception exception = assertThrows(UnrecognizedTicketException.class,executable);
         assertEquals(expectedMessage,exception.getMessage());

@@ -34,7 +34,7 @@ public class ServiceManager extends ParkingBoy{
         return managementList.contains(parkingBoy);
     }
 
-    public Car fetchkCarByParkingBoy(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
+    public Car fetchCarByParkingBoy(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
         if(containsParkingBoy(parkingBoy)){
             return parkingBoy.fetchCar(parkingTicket);
         }
