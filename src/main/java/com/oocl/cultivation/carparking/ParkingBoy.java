@@ -54,8 +54,8 @@ public class ParkingBoy {
     }
 
     public boolean hasAvailableSlot(){
-        return  parkingLotList.stream().
-                filter(parkingLot -> parkingLot.isNotFullCapacity()).findFirst().isPresent();
+        return parkingLotList.stream().
+                anyMatch(ParkingLot::isNotFullCapacity);
     };
 
 }
