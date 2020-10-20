@@ -28,7 +28,7 @@ public class ServiceManager extends ParkingBoy{
     }
 
     private ParkingBoy getParkingBoyWithAvailableSlot(){
-        return managementList.stream().filter(parkingBoy -> parkingBoy.hasAvailableSlot()).findFirst()
+        return managementList.stream().filter(ParkingBoy::hasAvailableSlot).findFirst()
                 .orElseThrow(() -> new NotEnoughPositionException(Constants.NOT_ENOUGH_POSITION_MSG));
     }
 
