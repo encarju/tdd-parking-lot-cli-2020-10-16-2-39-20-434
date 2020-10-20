@@ -10,7 +10,7 @@ public class NormalParking implements ParkingStrategy{
     @Override
     public ParkingLot getParkingLotOutOfList(List<ParkingLot> parkingLotList) {
         return parkingLotList.stream().
-                filter(parkingLot -> parkingLot.isNotFullCapacity()).findFirst().orElseThrow(
+                filter(ParkingLot::isNotFullCapacity).findFirst().orElseThrow(
                         ()->new NotEnoughPositionException(Constants.NOT_ENOUGH_POSITION_MSG));
     }
 }
