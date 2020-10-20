@@ -9,9 +9,8 @@ import java.util.List;
 public class NormalParking implements ParkingStrategy{
     @Override
     public ParkingLot getParkingLotOutOfList(List<ParkingLot> parkingLotList) {
-        ParkingLot parkingLotOutOfList = parkingLotList.stream().
+        return parkingLotList.stream().
                 filter(parkingLot -> parkingLot.isNotFullCapacity()).findFirst().orElseThrow(
                         ()->new NotEnoughPositionException(Constants.NOT_ENOUGH_POSITION_MSG));
-        return parkingLotOutOfList;
     }
 }
