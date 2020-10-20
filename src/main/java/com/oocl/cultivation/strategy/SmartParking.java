@@ -10,9 +10,8 @@ import java.util.List;
 public class SmartParking implements ParkingStrategy {
     @Override
     public ParkingLot getParkingLotOutOfList(List<ParkingLot> parkingLotList) {
-        ParkingLot parkingLotOutOfList = parkingLotList.stream()
+        return parkingLotList.stream()
                 .max(Comparator.comparingInt(ParkingLot::getAvailableCapacity))
                 .orElseThrow(()-> new NotEnoughPositionException(Constants.NOT_ENOUGH_POSITION_MSG));
-        return parkingLotOutOfList;
     }
 }
