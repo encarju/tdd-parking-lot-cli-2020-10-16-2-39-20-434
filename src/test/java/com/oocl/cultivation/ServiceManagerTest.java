@@ -40,7 +40,7 @@ class ServiceManagerTest {
         ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
         //When
-        ParkingTicket parkingTicket = serviceManager.parkCarByParkingBoy(parkingBoy,car);
+        ParkingTicket parkingTicket = serviceManager.parkCarByParkingBoy(car);
         //Then
         assertNotNull(parkingTicket);
 
@@ -54,7 +54,7 @@ class ServiceManagerTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
-        ParkingTicket parkingTicket = serviceManager.parkCarByParkingBoy(parkingBoy,car);
+        ParkingTicket parkingTicket = serviceManager.parkCarByParkingBoy(car);
         //When
         Car actualCar = serviceManager.fetchCarByParkingBoy(parkingBoy,parkingTicket);
         //Then
@@ -151,11 +151,31 @@ class ServiceManagerTest {
         ServiceManager serviceManager = new ServiceManager(new ParkingLot());
         serviceManager.addToManagementList(parkingBoy);
         String expectedMessage = "Not enough position";
-        serviceManager.parkCarByParkingBoy(parkingBoy,car1);
+        serviceManager.parkCarByParkingBoy(car1);
         //When
-        Executable executable = () -> serviceManager.parkCarByParkingBoy(parkingBoy,car2);
+        Executable executable = () -> serviceManager.parkCarByParkingBoy(car2);
         //Then
         Exception exception = assertThrows(NotEnoughPositionException.class,executable);
         assertEquals(expectedMessage,exception.getMessage());
     }
+
+    @Test
+    void should_return_0_capacity_for_parking_boy_2_when_parking_a_car_given_parking_boy_1_capacity_0_and_parking_boy_capacity_1(){
+        //Given
+        Car car1 = new Car();
+        ParkingLot parkingLot = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingBoy parkingBoy2 = new ParkingBoy(parkingLot2);
+        ServiceManager serviceManager = new ServiceManager(new ParkingLot());
+        serviceManager.addToManagementList(parkingBoy);
+        serviceManager.addToManagementList(parkingBoy2);
+        //When
+        serviceManager.parkCarByParkingBoy(car1);
+        //Then
+        assertEquals(0,parkingBoy.getParkingLotList().get(0).getAvailableCapacity());
+        assertEquals(0,parkingBoy2.getParkingLotList().get(0).getAvailableCapacity());
+
+    }
+
 }

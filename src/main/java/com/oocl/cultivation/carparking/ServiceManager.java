@@ -1,12 +1,13 @@
 package com.oocl.cultivation.carparking;
 
+import com.oocl.cultivation.exceptions.NotEnoughPositionException;
 import com.oocl.cultivation.strategy.NormalParking;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceManager extends ParkingBoy{
-    private List<ParkingBoy> managementList;
+    public List<ParkingBoy> managementList;
 
     public ServiceManager(ParkingLot parkingLot) {
         super(parkingLot);
@@ -22,12 +23,13 @@ public class ServiceManager extends ParkingBoy{
         return managementList;
     }
 
-    public ParkingTicket parkCarByParkingBoy(ParkingBoy parkingBoy, Car car) {
-        if(containsParkingBoy(parkingBoy)){
-            return parkingBoy.park(car);
-        }
-        return null;
+    public ParkingTicket parkCarByParkingBoy( Car car) {
+        return  getParkingBoyWithAvailableSlot().park(car);
+    }
 
+    private ParkingBoy getParkingBoyWithAvailableSlot(){
+        return managementList.stream().filter(parkingBoy -> parkingBoy.hasAvailableSlot()).findFirst()
+                .orElseThrow(() -> new NotEnoughPositionException(Constants.NOT_ENOUGH_POSITION_MSG));
     }
 
     private boolean containsParkingBoy(ParkingBoy parkingBoy){
