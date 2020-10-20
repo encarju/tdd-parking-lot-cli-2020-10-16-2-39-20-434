@@ -56,6 +56,6 @@ public class ParkingBoy {
     public boolean hasAvailableSlot(){
         return parkingLotList.stream().
                 anyMatch(ParkingLot::isNotFullCapacity);
-    };
+    }
 
 }
