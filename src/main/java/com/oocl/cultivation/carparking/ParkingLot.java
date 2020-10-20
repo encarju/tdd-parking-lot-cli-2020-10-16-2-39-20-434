@@ -51,7 +51,7 @@ public class ParkingLot {
     }
 
     public Double getCapacityRate() {
-        return Double.valueOf(getAvailableCapacity() / capacity);
+        return (double) (getAvailableCapacity() / capacity);
     }
 
 }
