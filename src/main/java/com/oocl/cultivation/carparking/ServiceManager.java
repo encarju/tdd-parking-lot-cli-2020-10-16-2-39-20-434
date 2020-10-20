@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceManager extends ParkingBoy{
-    public List<ParkingBoy> managementList;
+    private List<ParkingBoy> managementList;
 
     public ServiceManager(ParkingLot parkingLot) {
         super(parkingLot);
